@@ -29,6 +29,7 @@
  * [Конфиг Webpack с (laravel mix)](./webpack.mix.js)
 ---
 ## Обязательная структура каталогов
+Недостающие каталоги необходимо создать ручками [^1]
 <pre>
 ├── <a href="./resources/public" title="CF.Digital git">public</a>
 │   ├── *.html
