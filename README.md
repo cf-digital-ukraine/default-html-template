@@ -30,11 +30,11 @@
 ---
 ## Обязательная структура каталогов
 <pre>
-├── public  
-│   ├── *.html  
-│   └── index.html  
-├── resources  
-│   └── fonts  
+├── <a href="./resources/public" title="CF.Digital git">public</a>
+│   ├── *.html
+│   └── <a href="./resources/public/index.html" title="CF.Digital git">index.html</a>
+├── <a href="./resources/resources" title="CF.Digital git">resources</a>
+│   └── <a href="./resources/fonts" title="CF.Digital git">fonts</a>
 │   │   └── bold  
 │   │   │   ├── font-name.eot  
 │   │   │   ├── font-name.svg  
@@ -48,13 +48,13 @@
 │   │       ├── font-name.ttf  
 │   │       ├── font-name.woff  
 │   │       └── font-name.woff2  
-│   ├── image  
+│   ├── <a href="./resources/image" title="CF.Digital git">image</a>
 │   │   ├── folder  
 │   │   │   ├── ...  
 │   │   │   └── *.jpg|.svg|.png 
 │   │   ├── ...  
 │   │   └── *.jpg|.svg|.png 
-│   ├── sass  
+│   ├── <a href="./resources/sass" title="CF.Digital git">sass</a>
 │   │   ├── infoblock  
 │   │   │   ├── ...
 │   │   │   └── *.sass 
@@ -70,12 +70,12 @@
 │   │   ├── <a href="./resources/sass/_normalize.sass" title="CF.Digital git">_normalize.sass</a>
 │   │   ├── <a href="./resources/sass/_variables.sass" title="CF.Digital git">_variables.sass</a>
 │   │   ├── <a href="./resources/sass/app.sass" title="CF.Digital git">app.sass</a>
-│   │   └── old-ie.sass
-│   ├── js
+│   │   └── <a href="./resources/sass/old-ie.sass" title="CF.Digital git">old-ie.sass</a>
+│   ├── <a href="./resources/js" title="CF.Digital git">js</a>
 │   │   ├── ...custom-modules.js
 │   │   ├── <a href="./resources/js/delta-functions.js" title="CF.Digital git">delta-functions.js</a>
 │   │   └── <a href="./resources/js/app.js" title="CF.Digital git">app.js</a>
-│   └── to-remove
+│   └── <a href="./resources/to-remove" title="CF.Digital git">to-remove</a>
 │       ├── ...
 │       └── ***.ext
 ├── <a href="./.gitignore" title="CF.Digital git">.gitignore</a>
