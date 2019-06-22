@@ -11,12 +11,12 @@
 
 Обязательно необходимо установить [Node.js with npm 6+](https://nodejs.org/uk/download/)
 ### Команды выполнять в терминале - корень package.json
--`npm install` - Для загрузки всех development зависимостей
--`npm run watch` - Для запуска слушателей файлов
+-`npm install` - Для загрузки всех development зависимостей  
+-`npm run watch` - Для запуска слушателей файлов  
 
 Чтобы установить библиотеку, необходимо ее добавить в секцию dependencies файла [Пакет зависимостей](./package.json), почле чего запустить `npm install`
 
-#Project tree
+# Project tree
 .
  * [public](./public)
    * [Пример файла в системе](./public/app.blade.php)
