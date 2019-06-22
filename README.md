@@ -11,8 +11,15 @@
 
 Обязательно необходимо установить [Node.js with npm 6+](https://nodejs.org/uk/download/)
 ### Команды выполнять в терминале - корень package.json
-`npm install` - Для загрузки всех development зависимостей  
-`npm run watch` - Для запуска слушателей файлов  
+<sup>Для загрузки всех development зависимостей </sup>
+```shell
+npm install
+```
+<sup>Для запуска слушателей файлов</sup>
+```shell
+npm run watch
+```
+  
 
 Чтобы установить библиотеку, необходимо ее добавить в секцию dependencies файла [Пакет зависимостей](./package.json), после чего запустить `npm install`. Или выполнить команду `npm install *package-name* -S`
 
@@ -29,8 +36,8 @@
  * [Конфиг Webpack с (laravel mix)](./webpack.mix.js)
 ---
 ## Обязательная структура каталогов
-Недостающие каталоги необходимо создать ручками [^1]
-<pre>
+<sup>Недостающие каталоги необходимо создать ручками</sup>
+<pre>root
 ├── <a href="./resources/public" title="CF.Digital git">public</a>
 │   ├── *.html
 │   └── <a href="./resources/public/index.html" title="CF.Digital git">index.html</a>
