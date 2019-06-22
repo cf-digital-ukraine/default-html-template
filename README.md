@@ -68,8 +68,8 @@
 │   │   ├── _fonts.sass
 │   │   ├── _functions.sass
 │   │   ├── _normalize.sass
-│   │   ├── _variables.sass
-│   │   ├── app.sass
+│   │   ├── [_variables.sass](./resources/sass/app.sass)
+│   │   ├── [app.sass](./resources/sass/app.sass)
 │   │   └── old-ie.sass
 │   ├── js
 │   │   ├── ...custom-modules.js
