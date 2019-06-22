@@ -1,0 +1,216 @@
+//default styles for site
+html, body
+    font-family: $main-font
+    font-weight: normal
+    margin: 0
+    color: $default-color
+    line-height: normal
+    -webkit-tap-highlight-color: $transparent
+    text-size-adjust: 100%
+    border: none
+    letter-spacing: normal
+    font-kerning: none
+    text-rendering: optimizeSpeed
+    overflow-scrolling: revert
+    // overflow-x: hidden
+    width: 100%
+    +mediaSize(desktop)
+        font-size: get-vw(14px)
+    +mediaSize(float)
+        font-size: get-vw(14px)
+    +mediaSize(1200)
+        font-size: 12px
+    @media (hover: none) and (pointer: coarse)
+        cursor: pointer
+
+.svg-container
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 0
+    height: 0
+    opacity: 0
+    visibility: hidden
+    z-index: -1
+
+.ajax-content
+    display: none
+
+.modal-content
+    display: none
+
+.img-wrap img
+    width: 100%
+    max-width: 100%
+
+.disabled
+    pointer-events: none !important
+    opacity: .5 !important
+    box-shadow: none !important
+    color: $disabled-color !important
+
+.font-bold
+    font-weight: bold
+
+.font-d14-m12
+    +mediaSize(desctop)
+        font-size: get-vw(14px)
+    +mediaSize(float)
+        font-size: get-vw(14px)
+    +mediaSize(1200)
+        font-size: 12px
+
+.font-d16-m14
+    +mediaSize(desctop)
+        font-size: get-vw(16px)
+    +mediaSize(float)
+        font-size: get-vw(16px)
+    +mediaSize(1200)
+        font-size: 14px
+
+.letter-space-d40-m0
+    +mediaSize(desctop)
+        +letterSpace(40)
+    +mediaSize(float)
+        +letterSpace(40)
+    +mediaSize(1200)
+        +letterSpace(0)
+
+//-----------------------------------------------
+//
+
+h1, .h1
+    margin: 0
+    color: $default-color
+    +mediaSize(desctop)
+        font-size: get-vw(38px)
+    +mediaSize(float)
+        font-size: get-vw(38px)
+    +mediaSize(1200)
+        font-size: 32px
+
+h2, .h2
+    margin: 0
+    color: $default-color
+    +mediaSize(desctop)
+        font-size: get-vw(32px)
+    +mediaSize(float)
+        font-size: get-vw(32px)
+    +mediaSize(1200)
+        font-size: 24px
+
+h3, .h3
+    margin: 0
+    color: $default-color
+    +mediaSize(desctop)
+        font-size: get-vw(24px)
+    +mediaSize(float)
+        font-size: get-vw(24px)
+    +mediaSize(1200)
+        font-size: 16px
+
+h4, .h4
+    margin: 0
+    color: $default-color
+    +mediaSize(desctop)
+        font-size: get-vw(16px)
+    +mediaSize(float)
+        font-size: get-vw(16px)
+    +mediaSize(1200)
+        font-size: 14px
+
+h5, .h5
+    margin: 0
+    color: $default-color
+    +mediaSize(desctop)
+        font-size: get-vw(14px)
+    +mediaSize(float)
+        font-size: get-vw(14px)
+    +mediaSize(1200)
+        font-size: 12px
+
+h6, .h6
+    margin: 0
+    color: $default-color
+    +mediaSize(desctop)
+        font-size: get-vw(12px)
+    +mediaSize(float)
+        font-size: get-vw(12px)
+    +mediaSize(1200)
+        font-size: 10px
+
+span, p
+    color: $default-color
+    margin: 0
+    +mediaSize(desctop)
+        font-size: get-vw(14px)
+    +mediaSize(float)
+        font-size: get-vw(14px)
+    +mediaSize(1200)
+        font-size: 12px
+
+a
+    color: $default-color
+    cursor: pointer
+    +mediaSize(desctop)
+        font-size: get-vw(14px)
+    +mediaSize(float)
+        font-size: get-vw(14px)
+    +mediaSize(1200)
+        font-size: 12px
+
+a:hover
+    color: $active-color
+
+::placeholder
+    opacity: 1
+    color: $default-color
+
+textarea:disabled, input:disabled
+    background-color: $transparent
+
+button
+    background: $transparent
+    border: none
+    border-radius: 0
+    padding: 0
+
+a
+    background-color: $transparent
+    text-decoration: none
+
+label
+    display: block
+    position: relative
+    cursor: pointer
+
+legend, fieldset, input, optgroup, button, select, figure, textarea, select
+    line-height: normal
+    border: none
+    padding: 0
+    background: $transparent
+    display: block
+    width: 100%
+    text-align: left
+
+input[type=submit]
+    border: none
+    background: $transparent
+
+mark
+    background: $transparent
+    color: $default-color
+hr
+    box-sizing: content-box
+    display: block
+    height: 1px
+    border: 0
+    border-top: 1px solid #ccc
+    padding: 0
+    width: 100%
+    margin-top: 0
+    margin-bottom: 0
+
+*::selection
+    background: rgba(208, 0, 122, 0.2)
+    text-shadow: none
