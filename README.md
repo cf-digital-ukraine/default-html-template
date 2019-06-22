@@ -1,5 +1,5 @@
-# Default template for creating front-end part of project
-This package used for creating all front-end templates
+# Исходный шаблон для верстки
+ - подробные зависимости можно посмотреть в [Пакет зависимостей](./package.json)
 
 
 # Project tree
