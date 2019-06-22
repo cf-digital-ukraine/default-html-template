@@ -7,6 +7,10 @@
  - По умолчанию webpack development делает тоже самое что и прод, за исключением компилирования babel, очистки и минификации кода
    - postCss прогоняет вендоры - ```["last 1 versions"]```
 
+# INSTALL
+.
+`npm install`  
+`npm run watch`  
 
 # Project tree
 .
