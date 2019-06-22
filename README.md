@@ -15,58 +15,58 @@ This package used for creating all front-end templates
  * [Конфиг Webpack с (laravel mix)](./webpack.mix.js)
 ---
 ## Обязательная структура каталогов
-├── public
-│   ├── index.html
-│   └── *****.html
-├── resources
-│   └── fonts
-│   │   └── bold
-│   │   │   ├── font-name.eot
-│   │   │   ├── font-name.svg
-│   │   │   ├── font-name.ttf
-│   │   │   ├── font-name.woff
-│   │   │   └── font-name.woff2
-│   │   └── medium
-│   │       ├── font-name.eot
-│   │       ├── font-name.svg
-│   │       ├── font-name.ttf
-│   │       ├── font-name.woff
-│   │       └── font-name.woff2
-│   ├── image
-│   │   ├── folder
-│   │   │   ├── *.png
-│   │   │   ├──  ...
-│   │   │   └── *.svg
-│   │   ├── *.png
-│   │   ├──  ...
-│   │   └── *.jpg
-│   ├── sass
-│   │   ├── infoblock
-│   │   │   ├── ***.sass
-│   │   │   └──   ...
-│   │   ├── pages
-│   │   │   ├── ***.sass
-│   │   │   └──   ...
-│   │   ├── elements
-│   │   │   ├── ***.sass
-│   │   │   └──   ...
-│   │   ├── _default.sass
-│   │   ├── _fonts.sass
-│   │   ├── _functions.sass
-│   │   ├── _normalize.sass
-│   │   ├── _variables.sass
-│   │   ├── app.sass
-│   │   └── old-ie.sass
-│   ├── js
-│   │   ├──  ...custom-modules.js
-│   │   ├── delta-functions.js
-│   │   └── app.js
-│   └── to-remove
-│       ├── ***.ext
-│       ├──  ...
-│       └── ***.ext
-├── .gitignore
-├── package.json
-├── webpack.mix.js
-└── mix-manifest.json
+├── public  
+│   ├── index.html  
+│   └── *****.html  
+├── resources  
+│   └── fonts  
+│   │   └── bold  
+│   │   │   ├── font-name.eot  
+│   │   │   ├── font-name.svg  
+│   │   │   ├── font-name.ttf  
+│   │   │   ├── font-name.woff  
+│   │   │   └── font-name.woff2  
+│   │   └── medium  
+│   │       ├── font-name.eot  
+│   │       ├── font-name.svg  
+│   │       ├── font-name.ttf  
+│   │       ├── font-name.woff  
+│   │       └── font-name.woff2  
+│   ├── image  
+│   │   ├── folder  
+│   │   │   ├── *.png  
+│   │   │   ├──  ...  
+│   │   │   └── *.svg  
+│   │   ├── *.png  
+│   │   ├──  ...  
+│   │   └── *.jpg  
+│   ├── sass  
+│   │   ├── infoblock  
+│   │   │   ├── ***.sass  
+│   │   │   └──   ...  
+│   │   ├── pages  
+│   │   │   ├── ***.sass  
+│   │   │   └──   ...  
+│   │   ├── elements  
+│   │   │   ├── ***.sass  
+│   │   │   └──   ...  
+│   │   ├── _default.sass  
+│   │   ├── _fonts.sass  
+│   │   ├── _functions.sass  
+│   │   ├── _normalize.sass  
+│   │   ├── _variables.sass  
+│   │   ├── app.sass  
+│   │   └── old-ie.sass  
+│   ├── js  
+│   │   ├──  ...custom-modules.js  
+│   │   ├── delta-functions.js  
+│   │   └── app.js  
+│   └── to-remove  
+│       ├── ***.ext  
+│       ├──  ...  
+│       └── ***.ext  
+├── .gitignore  
+├── package.json  
+├── webpack.mix.js  
+└── mix-manifest.json  
 
