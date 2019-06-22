@@ -17,8 +17,8 @@ This package used for creating all front-end templates
 ## Обязательная структура каталогов
 ```
 ├── public  
-│   ├── index.html  
-│   └── *****.html  
+│   ├── *.html  
+│   └── index.html  
 ├── resources  
 │   └── fonts  
 │   │   └── bold  
@@ -27,6 +27,7 @@ This package used for creating all front-end templates
 │   │   │   ├── font-name.ttf  
 │   │   │   ├── font-name.woff  
 │   │   │   └── font-name.woff2  
+│   │   ...
 │   │   └── medium  
 │   │       ├── font-name.eot  
 │   │       ├── font-name.svg  
@@ -35,39 +36,36 @@ This package used for creating all front-end templates
 │   │       └── font-name.woff2  
 │   ├── image  
 │   │   ├── folder  
-│   │   │   ├── *.png  
-│   │   │   ├──  ...  
-│   │   │   └── *.svg  
-│   │   ├── *.png  
-│   │   ├──  ...  
-│   │   └── *.jpg  
+│   │   │   ├── ...  
+│   │   │   └── *.jpg|.svg|.png 
+│   │   ├── ...  
+│   │   └── *.jpg|.svg|.png 
 │   ├── sass  
 │   │   ├── infoblock  
-│   │   │   ├── ***.sass  
-│   │   │   └──   ...  
+│   │   │   ├── ...
+│   │   │   └── *.sass 
 │   │   ├── pages  
-│   │   │   ├── ***.sass  
-│   │   │   └──   ...  
+│   │   │   ├── ...
+│   │   │   └── *.sass  
 │   │   ├── elements  
-│   │   │   ├── ***.sass  
-│   │   │   └──   ...  
-│   │   ├── _default.sass  
-│   │   ├── _fonts.sass  
-│   │   ├── _functions.sass  
-│   │   ├── _normalize.sass  
-│   │   ├── _variables.sass  
-│   │   ├── app.sass  
-│   │   └── old-ie.sass  
-│   ├── js  
-│   │   ├──  ...custom-modules.js  
-│   │   ├── delta-functions.js  
-│   │   └── app.js  
-│   └── to-remove  
-│       ├── ***.ext  
-│       ├──  ...  
-│       └── ***.ext  
-├── .gitignore  
-├── package.json  
-├── webpack.mix.js  
-└── mix-manifest.json  
+│   │   │   ├── ...
+│   │   │   └── *.sass 
+│   │   ├── _default.sass
+│   │   ├── _fonts.sass
+│   │   ├── _functions.sass
+│   │   ├── _normalize.sass
+│   │   ├── _variables.sass
+│   │   ├── app.sass
+│   │   └── old-ie.sass
+│   ├── js
+│   │   ├── ...custom-modules.js
+│   │   ├── delta-functions.js
+│   │   └── app.js
+│   └── to-remove
+│       ├── ...
+│       └── ***.ext
+├── .gitignore
+├── package.json
+├── webpack.mix.js
+└── mix-manifest.json
 ```
