@@ -29,7 +29,7 @@
  * [Конфиг Webpack с (laravel mix)](./webpack.mix.js)
 ---
 ## Обязательная структура каталогов
-```
+<pre>
 ├── public  
 │   ├── *.html  
 │   └── index.html  
@@ -64,22 +64,22 @@
 │   │   ├── elements  
 │   │   │   ├── ...
 │   │   │   └── *.sass 
-│   │   ├── _default.sass
-│   │   ├── _fonts.sass
-│   │   ├── _functions.sass
-│   │   ├── _normalize.sass
-│   │   ├── [_variables.sass](./resources/sass/app.sass)
-│   │   ├── [app.sass](./resources/sass/app.sass)
+│   │   ├── <a href="./resources/sass/_default.sass" title="CF.Digital git">_default.sass</a>
+│   │   ├── <a href="./resources/sass/_fonts.sass" title="CF.Digital git">_fonts.sass</a>
+│   │   ├── <a href="./resources/sass/_functions.sass" title="CF.Digital git">_functions.sass</a>
+│   │   ├── <a href="./resources/sass/_normalize.sass" title="CF.Digital git">_normalize.sass</a>
+│   │   ├── <a href="./resources/sass/_variables.sass" title="CF.Digital git">_variables.sass</a>
+│   │   ├── <a href="./resources/sass/app.sass" title="CF.Digital git">app.sass</a>
 │   │   └── old-ie.sass
 │   ├── js
 │   │   ├── ...custom-modules.js
-│   │   ├── delta-functions.js
-│   │   └── app.js
+│   │   ├── <a href="./resources/js/delta-functions.js" title="CF.Digital git">delta-functions.js</a>
+│   │   └── <a href="./resources/js/app.js" title="CF.Digital git">app.js</a>
 │   └── to-remove
 │       ├── ...
 │       └── ***.ext
-├── .gitignore
-├── package.json
-├── webpack.mix.js
-└── mix-manifest.json
-```
+├── <a href="./.gitignore" title="CF.Digital git">.gitignore</a>
+├── <a href="./package.json" title="CF.Digital git">package.json</a>
+├── <a href="./webpack.mix.js" title="CF.Digital git">webpack.mix.js</a>
+└── <a href="./mix-manifest.json" title="CF.Digital git">mix-manifest.json</a>
+</pre>
