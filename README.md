@@ -1,10 +1,7 @@
 # Default template for creating front-end part of project
 This package used for creating all front-end templates
 
-
-$ ./tree-md .
 # Project tree
-
 .
  * [tree-md](./tree-md)
  * [dir2](./dir2)
@@ -16,4 +13,4 @@ $ ./tree-md .
    * [file12.ext](./dir1/file12.ext)
  * [file_in_root.ext](./file_in_root.ext)
  * [README.md](./README.md)
- * [dir3](./dir3)
+ * [Стандартный конфиг Webpack с (laravel mix)](./webpack.mix.js)
