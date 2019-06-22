@@ -1,4 +1,4 @@
-# Исходный шаблон для верстки
+#Исходный шаблон для верстки
  - Подробные зависимости можно посмотреть в [Пакет зависимостей](./package.json)
  - По умолчанию webpack prodaction собирает
    - JavaScript совместимый с "ES6<" - браузерами
@@ -7,12 +7,16 @@
  - По умолчанию webpack development делает тоже самое что и прод, за исключением компилирования babel, очистки и минификации кода
    - postCss прогоняет вендоры - ```["last 1 versions"]```
 
-# INSTALL
-.
-`npm install`  
-`npm run watch`  
+#INSTALL
 
-# Project tree
+Обязательно необходимо установить [Node.js with npm 6+](https://nodejs.org/uk/download/)
+###Команды выполнять в терминале - корень package.json
+-`npm install` - Для загрузки всех development зависимостей
+-`npm run watch` - Для запуска слушателей файлов
+
+Чтобы установить библиотеку, необходимо ее добавить в секцию dependencies файла [Пакет зависимостей](./package.json), почле чего запустить `npm install`
+
+#Project tree
 .
  * [public](./public)
    * [Пример файла в системе](./public/app.blade.php)
