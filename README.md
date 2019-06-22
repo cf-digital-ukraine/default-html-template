@@ -15,6 +15,7 @@ This package used for creating all front-end templates
  * [Конфиг Webpack с (laravel mix)](./webpack.mix.js)
 ---
 ## Обязательная структура каталогов
+```
 ├── public  
 │   ├── index.html  
 │   └── *****.html  
@@ -69,4 +70,4 @@ This package used for creating all front-end templates
 ├── package.json  
 ├── webpack.mix.js  
 └── mix-manifest.json  
-
+```
