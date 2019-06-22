@@ -3,14 +3,12 @@ This package used for creating all front-end templates
 
 # Project tree
 .
- * [tree-md](./tree-md)
- * [dir2](./dir2)
-   * [file21.ext](./dir2/file21.ext)
-   * [file22.ext](./dir2/file22.ext)
-   * [file23.ext](./dir2/file23.ext)
+ * [public](./public)
+   * [Пример используемого файла application`a](./public/app.blade.php)
+   * [file22.ext](./public/file22.ext)
  * [dir1](./dir1)
    * [file11.ext](./dir1/file11.ext)
    * [file12.ext](./dir1/file12.ext)
- * [file_in_root.ext](./file_in_root.ext)
  * [README.md](./README.md)
- * [Стандартный конфиг Webpack с (laravel mix)](./webpack.mix.js)
+ * [Пакет зависимостей](./package.json)
+ * [Конфиг Webpack с (laravel mix)](./webpack.mix.js)
