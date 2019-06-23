@@ -11,13 +11,10 @@
 .idea/
 .phpunit.result.cache
 .vscode/
-/.idea
 /.vagrant
 /.vscode
 /cache/
 /node_modules
-/package-lock.json
-/public/
 /public/themes/builder/
 /storage/*.key
 /themes/builder/move-to-public/
@@ -27,10 +24,8 @@ Homestead.yaml
 app/storage/
 bootstrap/compiled.php
 database.sqlite
-favicon.ico
 gzip.php
 modules/*/Config/backup/
-node_modules/
 npm-debug.log
 package-lock.json
 public/hot
@@ -40,3 +35,6 @@ stats.json
 storage/*.key
 vendor/
 yarn-error.log
+
+/public/css/
+/public/js/
