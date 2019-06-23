@@ -8,7 +8,7 @@
 - По умолчанию webpack development делает тоже самое что и прод, за исключением компилирования babel, очистки и минификации кода
   - postCss прогоняет вендоры - ```["last 1 versions"]```
 
-# INSTALL
+## INSTALL
 
 Обязательно необходимо установить [Node.js with npm 6+](https://nodejs.org/uk/download/)
 ### Команды выполнять в терминале - корень package.json
@@ -24,7 +24,7 @@ npm run watch
 
 Чтобы установить библиотеку, необходимо ее добавить в секцию dependencies файла [Пакет зависимостей](./package.json), после чего запустить `npm install`. Или выполнить команду `npm install *package-name* -S`
 
-# Project tree
+## Project tree
 .
 * [public](./public)
   * [Пример файла в системе](./public/app.blade.php)
