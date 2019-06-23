@@ -9,7 +9,8 @@ import {
     // FormValidation,
     isTouchDevice,
     onReady,
-    onResize
+    onResize,
+    createEvent
 } from "./delta-functions";
 
 
