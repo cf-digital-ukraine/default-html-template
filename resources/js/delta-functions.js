@@ -11,21 +11,10 @@ console.warn = function (message) {
  * Its a magic,
  * @param callback {function} - Function to execute when ready
  *********************/
-export const onReady = callback => {
+export const onReady = (callback) => {
     document.readyState === "interactive" || document.readyState === "complete"
         ? callback()
         : document.addEventListener("DOMContentLoaded", callback, false);
-};
-
-/*********************
- *** any addEventListener
- * @param parameter {string or NodeElement or NodeList} - Function to execute when ready
- * @returns {NodeElement}
- *********************/
-export const createEvent = (elements, event, callback) => {
-    getElements(elements).forEach((item) => {
-        return item.addEventListener(event, callback, false);
-    })
 };
 
 /*********************
@@ -34,8 +23,8 @@ export const createEvent = (elements, event, callback) => {
  * @param parameter {string or NodeElement or NodeList} - Function to execute when ready
  * @returns {false or Array}
  *********************/
-export const getElements = parameter => {
-    if ((typeof parameter === 'string' && typeof parameter !== 'object') || parameter.constructor === String) {
+export const getElements = (parameter) => {
+    if ((typeof parameter === "string" && typeof parameter !== "object") || parameter.constructor === String) {
 
         try {
             if (document.querySelectorAll(parameter).length > 0) {
@@ -57,16 +46,28 @@ export const getElements = parameter => {
 }
 
 /*********************
+ *** any addEventListener
+ * @param parameter {string or NodeElement or NodeList} - Function to execute when ready
+ * @returns {NodeElement}
+ *********************/
+export const createEvent = (elements, event, callback) => {
+    getElements(elements).forEach((item) => {
+        return item.addEventListener(event, callback, false);
+    })
+};
+
+/*********************
  *** Check device gesture
  * @returns {boolean}
  *********************/
 export function isTouchDevice() {
+    window.DocumentTouch = window.DocumentTouch ? window.DocumentTouch : false;
     let prefixes = " -webkit- -moz- -o- -ms- ".split(" ");
     let mq = function (query) {
         return window.matchMedia(query).matches;
     };
 
-    if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+    if (("ontouchstart" in window) || window.DocumentTouch && document instanceof DocumentTouch) {
         return true;
     }
     let query = ["(", prefixes.join("touch-enabled),("), "heartz", ")"].join('');
