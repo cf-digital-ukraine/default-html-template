@@ -28,6 +28,6 @@
     "dependencies": {
     },
     "browserslist": [
-        "last 2 versions", "ie >= 11", 'Firefox > 20', 'iOS > 8', 'Safari > 8'
+        "last 2 versions", "ie >= 11", "Firefox > 20", "iOS > 8", "Safari > 8"
      ]
 }
