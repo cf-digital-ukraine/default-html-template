@@ -1,5 +1,20 @@
 
 /*********************
+ * Section for creating in file function
+ * eg:
+ *      rendering custom html from json,
+ *      load and resize some specific elements on page,
+ *      and other
+ * Initialize examples:
+ *********************/
+/**
+ *
+ * @param {*} parameter
+ */
+function someFunction(parameter) {}
+function loadAndResize(parameter) {}
+
+/*********************
  * Section import custom functions
  * Import examples:
  *********************/
@@ -96,18 +111,3 @@ createEvent(window, "load", function (e) {
 createEvent(window, "scroll", function (e) {
     
 });
-
-/*********************
- * Section for creating in file function
- * eg:
- *      rendering custom html from json,
- *      load and resize some specific elements on page,
- *      and other
- * Initialize examples:
- *********************/
-/**
- *
- * @param {*} parameter
- */
-function someFunction(parameter) {}
-function loadAndResize(parameter) {}
