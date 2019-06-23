@@ -16,13 +16,13 @@ import {
 /*********************
  * initialize some site properties
  *********************/
-if (!window.site.hasOwnProperty('scrollBarWidth')){
+if (!window.site.hasOwnProperty("scrollBarWidth")){
     window.site.scrollBarWidth = window.innerWidth - document.body.scrollWidth;
 }
-if (!window.site.hasOwnProperty('supportsVibrate')) {
+if (!window.site.hasOwnProperty("supportsVibrate")) {
     window.site.supportsVibrate = "vibrate" in navigator;
 }
-if (!window.site.hasOwnProperty('isTouch')) {
+if (!window.site.hasOwnProperty("isTouch")) {
     window.site.isTouch = isTouchDevice();
 }
 
@@ -68,15 +68,15 @@ $(document)
     .ready(function () {});
 
 $(window)
-    .on('load', function () {
+    .on("load", function () {
         loadAndResize();
         //etc
     })
-    .on('resize', function () {
+    .on("resize", function () {
         loadAndResize();
         //etc
     })
-    .on('scroll', function () {});
+    .on("scroll", function () {});
 
 // else if you use blessed JavaScript
 onReady(function() {
@@ -84,15 +84,15 @@ onReady(function() {
 });
 
 
-createEvent(window, 'resize', function (e) {
+createEvent(window, "resize", function (e) {
     loadAndResize();
 });
 
-createEvent(window, 'load', function (e) {
+createEvent(window, "load", function (e) {
     loadAndResize();
 });
 
-createEvent(window, 'scroll', function (e) {
+createEvent(window, "scroll", function (e) {
     
 });
 
