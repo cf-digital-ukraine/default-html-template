@@ -1,6 +1,7 @@
 {
     "private": true,
     "scripts": {
+        "test": "jshint app.js",
         "dev": "npm run development",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "npm run development -- --watch",
@@ -19,7 +20,8 @@
         "sass-loader": "^7.1.0",
         "cross-env": "^5.2.0",
         "laravel-mix": "^4.0.0",
-        "vue-template-compiler": "^2.5.22"
+        "vue-template-compiler": "^2.5.22",
+        "jshint": "^2.6.0"
     },
     "dependencies": {
     }
