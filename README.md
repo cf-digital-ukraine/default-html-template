@@ -1,13 +1,13 @@
 [![Build Status](https://travis-ci.com/cf-digital-ukraine/default-html-template.svg?branch=master)](https://travis-ci.com/cf-digital-ukraine/default-html-template) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/43d32cd89e5e42dabcef8c0ad6aeb5a7)](https://www.codacy.com/app/cf-digital-ukraine/default-html-template?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cf-digital-ukraine/default-html-template&amp;utm_campaign=Badge_Grade) [![Greenkeeper badge](https://badges.greenkeeper.io/cf-digital-ukraine/default-html-template.svg)](https://greenkeeper.io/) [![devDependency Status](https://david-dm.org/cf-digital-ukraine/default-html-template/dev-status.svg)](https://david-dm.org/cf-digital-ukraine/default-html-template#info=devDependencies) [![Dependency Status](https://david-dm.org/cf-digital-ukraine/default-html-template.svg)](https://david-dm.org/cf-digital-ukraine/default-html-template)
 # Исходный шаблон для верстки
-- Подробные зависимости можно посмотреть в [Пакет зависимостей](./package.json)
-- По умолчанию webpack prodaction собирает
-  - JavaScript совместимый с "ES6<" - браузерами
-  - postCss прогоняет вендоры - ```["last 2 versions", "ie >= 11", 'Firefox > 20', 'iOS > 8', 'Safari > 8']```
-  - postCss минимизирует и групирует медиа-запросы
+- Подробные зависимости можно посмотреть в [Пакет зависимостей](./package.json)  
+- По умолчанию webpack prodaction собирает  
+  - JavaScript совместимый с "ES6<" - браузерами  
+  - postCss прогоняет вендоры - ```["last 2 versions", "ie >= 11", 'Firefox > 20', 'iOS > 8', 'Safari > 8']```  
+  - postCss минимизирует и групирует медиа-запросы  
   
-- По умолчанию webpack development делает тоже самое что и прод, за исключением компилирования babel, очистки и минификации кода
-  - postCss прогоняет вендоры - ```["last 1 versions"]```
+- По умолчанию webpack development делает тоже самое что и прод, за исключением компилирования babel, очистки и минификации кода  
+  - postCss прогоняет вендоры - ```["last 1 versions"]```  
 
 ## INSTALL
 
