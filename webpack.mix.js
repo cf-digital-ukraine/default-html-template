@@ -121,7 +121,7 @@ if (mix.inProduction()) {
 // fonts, images, temporary diresctories
 mix.copyDirectory("from", "to");
 mix.sass("resources/sass/app.sass", "public/css/app.css");
-mix.sass("resources/sass/old-id.sass", "public/css/internet-explorer.css");
+mix.sass("resources/sass/old-ie.sass", "public/css/internet-explorer.css");
 
 // mix.sourceMaps(); // Enable sourcemaps
 // mix.version(); // Enable versioning.
