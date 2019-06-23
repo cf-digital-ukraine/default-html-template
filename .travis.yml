@@ -4,7 +4,3 @@ node_js:
 cache:
   directories:
     - "node_modules"
-install:
-  - cd istanbul-mocha && npm install && cd ..
-script:
-  - cd istanbul-mocha && npm test
