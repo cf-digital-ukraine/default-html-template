@@ -18,7 +18,7 @@ const webpack = require("webpack");
 
 const fs = require("fs"); // i dont know what is it, but mqpacker without this - dont work. Maybe FileSystem?
 const mqpacker = require("css-mqpacker"); // combaine all media queries by a groups
-const sortCSSmq = require('sort-css-media-queries'); //custom sorting for mqpacker
+const sortCSSmq = require("sort-css-media-queries"); //custom sorting for mqpacker
 
 mix.options({
     processCssUrls: false, // dont copy files by links from css
@@ -32,8 +32,8 @@ mix.options({
 
 mix.webpackConfig({
     resolve: {
-        extensions: ['.js'],
-        modules: ['node_modules'],
+        extensions: [".js"],
+        modules: ["node_modules"],
 
     /**
      * if you have a problem with compiling
@@ -88,7 +88,7 @@ if (mix.inProduction()) {
         terser: {
             terserOptions: {
                 compress: {
-                    drop_console: true
+                    "drop_console": true
                 }
             }
         }
