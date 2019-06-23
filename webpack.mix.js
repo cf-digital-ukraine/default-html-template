@@ -80,8 +80,8 @@ if (mix.inProduction()) {
             // reInit autoprefixer with new params
             require("autoprefixer")({
                 grid: "autoplace",
-                remove: false, //should Autoprefixer [remove outdated] prefixes. Default is true.
-                browsers: ["last 2 versions", "ie >= 11", 'Firefox > 20', 'iOS > 8', 'Safari > 8']
+                remove: false //should Autoprefixer [remove outdated] prefixes. Default is true.
+//                 browsers: ["last 2 versions", "ie >= 11", 'Firefox > 20', 'iOS > 8', 'Safari > 8']
             })
         ],
         // drop all consoles
@@ -119,7 +119,7 @@ if (mix.inProduction()) {
 }
 
 // fonts, images, temporary diresctories
-mix.copyDirectory("from", "to");
+// mix.copyDirectory("from", "to");
 mix.sass("resources/sass/app.sass", "public/css/app.css");
 mix.sass("resources/sass/old-ie.sass", "public/css/internet-explorer.css");
 
