@@ -21,7 +21,9 @@
         "cross-env": "^5.2.0",
         "laravel-mix": "^4.0.0",
         "vue-template-compiler": "^2.5.22",
-        "jshint": "^2.6.0"
+        "jshint": "^2.6.0",
+        "css-mqpacker": "^7.0.0",
+        "sort-css-media-queries": "1.4.3"
     },
     "dependencies": {
     }
