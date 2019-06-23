@@ -10,7 +10,7 @@ import {
     isTouchDevice,
     onReady,
     onResize
-} from './delta-functions';
+} from "./delta-functions";
 
 
 /*********************
