@@ -26,5 +26,8 @@
         "sort-css-media-queries": "1.4.3"
     },
     "dependencies": {
-    }
+    },
+    "browserslist": [
+        "last 2 versions", "ie >= 11", 'Firefox > 20', 'iOS > 8', 'Safari > 8'
+     ]
 }
