@@ -61,13 +61,13 @@ export const createEvent = (elements, event, callback) => {
  * @returns {boolean}
  *********************/
 export function isTouchDevice() {
-    window.DocumentTouch = window.DocumentTouch ? window.DocumentTouch : false;
+    
     let prefixes = " -webkit- -moz- -o- -ms- ".split(" ");
     let mq = function (query) {
         return window.matchMedia(query).matches;
     };
 
-    if (("ontouchstart" in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+    if (("ontouchstart" in window) || window.DocumentTouch && document instanceof window.DocumentTouch) {
         return true;
     }
     let query = ["(", prefixes.join("touch-enabled),("), "heartz", ")"].join('');
