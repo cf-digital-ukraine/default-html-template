@@ -5,7 +5,7 @@ console.warn = function (message) {
     } else {
         defaultConsole.apply(console, arguments);
     }
-}
+};
 
 /*********************
  * Its a magic,
@@ -20,8 +20,8 @@ export const onReady = (callback) => {
 /*********************
  *** Check parameter on string or DOM object/objects and return Array of object
      or false is not find element on page
- * @param parameter {string or NodeElement or NodeList} - Function to execute when ready
- * @returns {false or Array}
+ * @param {string | Element | NodeList} parameter  - Function to execute when ready
+ * @returns {boolean | Array}
  *********************/
 export const getElements = (parameter) => {
     if ((typeof parameter === "string" && typeof parameter !== "object") || parameter.constructor === String) {
@@ -43,12 +43,14 @@ export const getElements = (parameter) => {
             return Array.from([parameter]);
         }
     }
-}
+};
 
 /*********************
  *** any addEventListener
- * @param parameter {string or NodeElement or NodeList} - Function to execute when ready
- * @returns {NodeElement}
+ * @param {string | Element | NodeList} elements  - Function to execute when ready
+ * @param {string} event - Event tpe
+ * @param {function} callback - Execute function when triggered event
+ * @returns {Element}
  *********************/
 export const createEvent = (elements, event, callback) => {
     getElements(elements).forEach((item) => {
@@ -144,9 +146,9 @@ export function scrollToElem(elem, time = 0.4, offsetRange = 0) {
  * @returns {undefined}
  *********************/
 export function createCookie(name, value, days) {
-    var expires = "";
+    let expires = "";
     if (days) {
-        var date = new Date();
+        let date = new Date();
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         expires = "; expires=" + date.toUTCString();
     }
@@ -156,15 +158,15 @@ export function createCookie(name, value, days) {
 /*********************
  *** Get browser cookie
  * @param {string} name
- * @returns {string or null}
+ * @returns {string | null}
  *********************/
 export function readCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == " ") c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === " ") c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
 }

@@ -33,17 +33,18 @@ $layout-height: 760
 
 
 @mixin mediaSize($media)
-    @if $media == desctop
+
+    @if $media == desktop
         @media (min-width: 1601px)
             @content
-    @if $media == float
+    @else if $media == float
         @media (min-width: 1201px) and (max-width: 1600px)
             @content
     @else
         @media (max-width: $media+px)
             @content
 // USAGE
-// +mediaSize(desctop)
+// +mediaSize(desktop)
 // +mediaSize(float)
 // +mediaSize(1200)
 

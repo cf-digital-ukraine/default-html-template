@@ -22,10 +22,13 @@ const sortCSSmq = require("sort-css-media-queries"); //custom sorting for mqpack
 
 mix.options({
     processCssUrls: false, // dont copy files by links from css
-    autoprefixer: false, // disable defaults
     postCss: [
         require("css-mqpacker")({
-            sort: sortCSSmq.desktopFirst
+            sort: sortCSSmq
+        }),
+        require("autoprefixer")({
+            grid: "autoplace",
+            remove: true
         })
     ]
 });
@@ -48,7 +51,6 @@ mix.webpackConfig({
      *  or provide in plugins
      */
         alias: {
-
             /** GSAP */
             // 'TweenLite': 'gsap/src/minified/TweenLite.min.js',
             // 'TweenMax': 'gsap/src/minified/TweenMax.min.js',
@@ -74,16 +76,8 @@ mix.webpackConfig({
 });
 
 if (mix.inProduction()) {
-
+    
     mix.options({
-        postCss: [
-            // reInit autoprefixer with new params
-            require("autoprefixer")({
-                grid: "autoplace",
-                remove: false //should Autoprefixer [remove outdated] prefixes. Default is true.
-//                 browsers: ["last 2 versions", "ie >= 11", 'Firefox > 20', 'iOS > 8', 'Safari > 8']
-            })
-        ],
         // drop all consoles
         terser: {
             terserOptions: {
@@ -102,17 +96,6 @@ if (mix.inProduction()) {
     mix.babel(["resources/js/vanilla.js"], "public/js/app.js");
 
 } else {
-
-    mix.options({
-        postCss: [
-            // reInit autoprefixer with new params
-            require("autoprefixer")({
-                grid: false,
-                remove: true, //should Autoprefixer [remove outdated] prefixes. Default is true.
-                browsers: ["last 1 versions"]
-            })
-        ]
-    });
     
     //section for development, will not work IE11<, safari 9.1.3<
     mix.js(["resources/js/app.js"], "public/js/app.js");
@@ -120,6 +103,7 @@ if (mix.inProduction()) {
 
 // fonts, images, temporary diresctories
 // mix.copyDirectory("from", "to");
+
 mix.sass("resources/sass/app.sass", "public/css/app.css");
 mix.sass("resources/sass/old-ie.sass", "public/css/internet-explorer.css");
 
