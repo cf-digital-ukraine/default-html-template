@@ -1,7 +1,7 @@
 let defaultConsole = console.warn;
 console.warn = function (message) {
-    if (typeof message === 'string' && arguments.length === 1){
-            defaultConsole.apply(console, ['%c'+message, 'background: #222; color: #bada55; padding: 3px 10px; font-size: 15px;']);
+    if (typeof message === "string" && arguments.length === 1){
+            defaultConsole.apply(console, ["%c"+message, "background: #222; color: #bada55; padding: 3px 10px; font-size: 15px;"]);
     } else {
         defaultConsole.apply(console, arguments);
     }
@@ -61,7 +61,7 @@ export const getElements = parameter => {
  * @returns {boolean}
  *********************/
 export function isTouchDevice() {
-    let prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
+    let prefixes = " -webkit- -moz- -o- -ms- ".split(" ");
     let mq = function (query) {
         return window.matchMedia(query).matches;
     };
@@ -69,7 +69,7 @@ export function isTouchDevice() {
     if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
         return true;
     }
-    let query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('');
+    let query = ["(", prefixes.join("touch-enabled),("), "heartz", ")"].join('');
     console.log(query);
     return mq(query);
 }
@@ -162,7 +162,7 @@ export function readCookie(name) {
     var ca = document.cookie.split(';');
     for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        while (c.charAt(0) == " ") c = c.substring(1, c.length);
         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
