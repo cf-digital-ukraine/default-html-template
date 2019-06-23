@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/cf-digital-ukraine/default-html-template.svg?branch=master)](https://travis-ci.com/cf-digital-ukraine/default-html-template)
 # Исходный шаблон для верстки
  - Подробные зависимости можно посмотреть в [Пакет зависимостей](./package.json)
  - По умолчанию webpack prodaction собирает
