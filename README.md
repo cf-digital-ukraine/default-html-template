@@ -23,33 +23,23 @@
 
 ## INSTALL
 
-Обязательно необходимо установить [Node.js with npm 6+](https://nodejs.org/uk/download/)
-### Команды выполнять в терминале - корень package.json
-<sup>Для загрузки всех development зависимостей </sup>
+Must be installed [Node.js with npm 6+](https://nodejs.org/uk/download/)
+### Teams run in the terminal - the root of [package](./package.json)  
+To download all development dependencies:
 ```shell
 npm install
 ```
-<sup>Для запуска слушателей файлов</sup>
+To start file listeners:
 ```shell
 npm run watch
 ```
   
-Чтобы установить библиотеку, необходимо ее добавить в секцию dependencies файла [Пакет зависимостей](./package.json), после чего запустить `npm install`. Или выполнить команду `npm install *package-name* -S`
+To install the library, you must add it to the dependent dependencies section of the [package](./package.json), and then `run npm install`.
+Or execute the command `npm install *package-name* -S` in the terminal
 
-## Project tree
-.
-* [public](./public)
-  * [Пример файла в системе](./public/app.blade.php)
-   * [Исходный шаблон HTML](./public/index.html)
- * [resources](./resources)
-   * [Точка входа sass](./resources/sass/app.sass)
-   * [Точка входа js](./resources/js/app.js)
- * [README.md](./README.md)
- * [Пакет зависимостей](./package.json)
- * [Конфиг Webpack с (laravel mix)](./webpack.mix.js)
 ---
-## Обязательная структура каталогов
-<sup>Недостающие каталоги необходимо создать ручками</sup>
+## Required directory structure
+<sup>If necessary, the structure must be expanded</sup>
 <pre>root
 ├── <a href="./resources/public" title="CF.Digital git">public</a>
 │   ├── *.html
