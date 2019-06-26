@@ -97,6 +97,8 @@ if (mix.inProduction()) {
 
 } else {
     
+    mix.sourceMaps(); // Enable sourcemaps
+ 
     //section for development, will not work IE11<, safari 9.1.3<
     mix.js(["resources/js/app.js"], "public/js/app.js");
 }
