@@ -8,7 +8,7 @@
 
 - Webpack is an extended package of "laravel-mix" and its configuration differs from the standard one.
 - This template works separately from the Laravel itself, and is intended solely for layout.
-- Before you begin, you need to configure the configuration:
+- Before you begin, you need to change the configuration:
   - _File paths and directories_  
   - _Clear unnecessary parameters_  
   - _If necessary, update dependencies_  
