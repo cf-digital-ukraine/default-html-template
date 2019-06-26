@@ -4,7 +4,7 @@
 
 <p align="left">
   <img src="https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/gb.svg" width="25px" height="10px">  
-    <a href="./README.MD" title="CF.Digital git" style="vertical-align: middle;margin-left: 25px;">README English</a>
+    <a href="./README.md" title="CF.Digital git" style="vertical-align: middle;margin-left: 25px;">README English</a>
 </p>
 
 # Стандартний шаблон
