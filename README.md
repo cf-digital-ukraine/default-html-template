@@ -3,14 +3,15 @@
   <img src="https://cdn.rawgit.com/hjnilsson/country-flags/master/svg/ua.svg" width="25px" height="10px">  
     <a href="./README.ua.md" title="CF.Digital git" style="vertical-align: middle;margin-left: 25px;">README Українською</a>
 </p>
+
 # Standard template CF.Digital
 
 - Webpack is an extended package of "laravel-mix" and its configuration differs from the standard one.
 - This template works separately from the Laravel itself, and is intended solely for layout.
 - Before you begin, you need to configure the configuration:
- - _File paths and directories_  
- - _Clear unnecessary parameters_  
- - _If necessary, update dependencies_  
+  - _File paths and directories_  
+  - _Clear unnecessary parameters_  
+  - _If necessary, update dependencies_  
  
 - More information about dependencies is in the file [package](./package.json)  
 - By default webpack prodaction (npm run prod command) collects:  
