@@ -64,7 +64,8 @@ mix.webpackConfig({
 
             /** and jQuery */
             // 'jQuery': "jquery/dist/jquery.min.js"
-        },
+        }
+    },
         plugins: [
             /** and here jQuery */
             // new webpack.ProvidePlugin({
@@ -72,7 +73,6 @@ mix.webpackConfig({
             //     jQuery: "jquery"
             // })
         ]
-    }
 });
 
 if (mix.inProduction()) {
