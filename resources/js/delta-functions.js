@@ -1,11 +1,25 @@
-let defaultConsole = console.warn;
-console.warn = function (message) {
-    if (typeof message === "string" && arguments.length === 1){
-            defaultConsole.apply(console, ["%c"+message, "background: #222; color: #bada55; padding: 3px 10px; font-size: 15px;"]);
-    } else {
-        defaultConsole.apply(console, arguments);
+
+
+/*********************
+ *** Scroll document to element
+ * @param elem {object}
+ * @param time {number} float in seconds
+ * @param offsetRange {number}
+ * @returns {undefined}
+ *********************/
+export function scrollToElem(elem, time = 0.4, offsetRange = 0) {
+    
+    if (elem) {
+        TweenMax.to(window, time, {
+            scrollTo: elem.getBoundingClientRect().top + window.scrollY - offsetRange
+        });
     }
-};
+    
+}
+
+//______________________________________________________________________________________________________________________
+//______________________________________________________________________________________________________________________
+
 
 /*********************
  * Its a magic,
@@ -16,6 +30,15 @@ export const onReady = (callback) => {
         ? callback()
         : document.addEventListener("DOMContentLoaded", callback, false);
 };
+
+
+export function isExist(elements, callback) {
+    if(getElements(elements)) {
+        return callback(elements);
+    } else {
+        return false;
+    }
+}
 
 /*********************
  *** Check parameter on string or DOM object/objects and return Array of object
@@ -42,6 +65,22 @@ export const getElements = (parameter) => {
         } else {
             return Array.from([parameter]);
         }
+    }
+};
+
+/*********************
+ *** Check parameter on string or DOM object/objects and return Array of object
+ or false is not find element on page
+ * @param {string | Element | NodeList} parameter  - Function to execute when ready
+ * @returns {boolean | Element}
+ *********************/
+export const getElement = (parameter) => {
+    try {
+        let item = getElements(parameter);
+        return item.length === 1 ? item[0]: false;
+    } catch (e) {
+        console.warn(e);
+        return false;
     }
 };
 
@@ -73,35 +112,7 @@ export function isTouchDevice() {
         return true;
     }
     let query = ["(", prefixes.join("touch-enabled),("), "heartz", ")"].join('');
-    console.log(query);
     return mq(query);
-}
-
-/*********************
- * @param event {object} - DOM event
- * @param block {string} - css selector of container
- * @param button {string} - css selector of button
- * @param activeClass {string} - class for check button and block state
- * @returns {void}
- *********************/
-export function closeOnOutsideClick(event, block, button, activeClass) {
-    if (typeof TweenMax === "undefined") throw new Error('for execute need <a href="https://www.npmjs.com/package/gsap">TweenMax</a>');
-
-    block = getElements(block);
-    button = getElements(button);
-    
-    if (!block || !button) return false;
-
-    let isTargetBlock = checkOutsideClick(event, block, button, activeClass);
-    if (isTargetBlock) {
-        TweenMax.to(block, 0.25, {
-            scale: 0,
-            opacity: 0,
-            ease: Power1.easeIn
-        });
-        block.classList.remove(activeClass);
-        button.classList.remove(activeClass);
-    }
 }
 
 /*********************
@@ -112,30 +123,13 @@ export function closeOnOutsideClick(event, block, button, activeClass) {
  * @param activeClass {string} - class for check button and block state
  * @returns {boolean}
  *********************/
-function checkOutsideClick(event, block, button, activeClass) {
+export function checkOutsideClick(event, block, button, activeClass) {
     return (
         block.classList.contains(activeClass) &&
         button.classList.contains(activeClass) &&
         !block.contains(event.target) &&
         !button.contains(event.target)
     );
-}
-
-/*********************
- *** Scroll document to element
- * @param elem {object}
- * @param time {number} float in seconds
- * @param offsetRange {number}
- * @returns {undefined}
- *********************/
-export function scrollToElem(elem, time = 0.4, offsetRange = 0) {
-
-    if (elem) {
-        TweenMax.to(window, time, {
-            scrollTo: elem.getBoundingClientRect().top + window.scrollY - offsetRange
-        });
-    }
-
 }
 
 /*********************
@@ -178,29 +172,6 @@ export function readCookie(name) {
  *********************/
 export function eraseCookie(name) {
     createCookie(name, "", -1);
-}
-
-/*********************
- *** Replace image to background-image if not support object-fit property
- * @param elements
- * @param size
- * @param needed
- * @returns {undefined}
- *********************/
-export function objectFitImages(elements, size, needed) {
-    if (needed) {
-        getElements(elements).forEach((item)=>{
-            let src = item.getAttribute("src");
-            if (src.length) {
-                item.cssText = `background-image: url(${src});
-                                background-size: ${size};
-                                background-position: center;
-                                background-repeat: no-repeat;`;
-                item.setAttribute('src', '');
-                item.setAttribute('alt', '');
-            }
-        })
-    }
 }
 
 //
