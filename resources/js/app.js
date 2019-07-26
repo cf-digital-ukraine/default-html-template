@@ -11,8 +11,9 @@
  *
  * @param {*} parameter
  */
-function someFunction(parameter) {}
-function loadAndResize(parameter) {}
+function loadAndResize(parameter) {
+    window.site.scrollBarWidth = window.innerWidth - document.body.scrollWidth;
+}
 
 /*********************
  * Section import custom functions
@@ -21,12 +22,10 @@ function loadAndResize(parameter) {}
 import {
     // readCookie,
     // createCookie,
-    // FormValidation,
     isTouchDevice,
     onReady,
-    onResize,
     createEvent
-} from "./delta-functions";
+} from "./functions";
 
 
 /*********************
@@ -72,7 +71,6 @@ if (!window.site.hasOwnProperty("isTouch")) {
 // function initFormValidation(object) {
 //     new FormValidation(object);
 // }
-// window.initFormValidation = initFormValidation;
 
 // if you use jQuery
 $(document)

@@ -129,7 +129,7 @@ if (mix.inProduction()) {
 // fonts, images, temporary diresctories
 mix.copyDirectory('resources/fonts', 'public/fonts/');
 mix.copyDirectory('resources/image', 'public/image/');
-mix.copyDirectory('html', 'public/');
+mix.copyDirectory('resources/html', 'public/');
 // mix.copyDirectory("from", "to");
 
 mix.sass("resources/sass/app.sass", "public/css/app.css");

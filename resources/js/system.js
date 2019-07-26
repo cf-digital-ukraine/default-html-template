@@ -1,4 +1,12 @@
+import axios from "axios"
+global.axios = axios;
+window.axios.defaults.headers.common = {
+    'X-Requested-With': 'XMLHttpRequest',
+    'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+};
 
+import FormController from "./_system-classes/FormController"
+import AxiosGet from "./_system-classes/AxiosGet"
 
 window.sendStatistics = function(bannerId, isClick) {
     if (typeof isClick === undefined || typeof isClick === 'undefined') {
@@ -23,25 +31,6 @@ window.sendStatistics = function(bannerId, isClick) {
         console.log(e);
     }
 };
-
-import axios from "axios"
-global.axios = axios;
-
-window.axios.defaults.headers.common = {
-    'X-Requested-With': 'XMLHttpRequest',
-    'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-};
-
-import FormController from "./_system-classes/FormController"
-import AxiosGet from "./_system-classes/AxiosGet"
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-    
-    formControllerInit();
-    
-});
 
 global.onOpenModal = function(selectors) {
     document.querySelector('html').style.overflow = 'hidden';
@@ -72,56 +61,26 @@ global.onCloseModal = function(selectors) {
 
 global.formControllerInit = function() {
     
-    let formTypeField = ['input', 'textarea', 'select', 'button'];
+    new FormController().init({
+        forms: 'form[action]',
+        success: function (formObject, data, response) {
+            console.log('target: formObject - ', formObject);
+            console.log('target: data - ', data);
+            console.log('target: response - ', response);
+            console.log('target: form object - ', this);
     
-    if(document.querySelector('.label-phone input')) {
-        document.querySelectorAll('.label-phone input').forEach(function (item) {
-            new IMask(item, {
-                mask: 'start (`zero`99) 999-99-99',
-                definitions: {
-                    '9': /[0-9]/
-                },
-                blocks: {
-                    zero: {
-                        mask: IMask.MaskedRange,
-                        maxLength: 1,
-                        from: 0,
-                        to: 0
-                    },
-                    start: {
-                        mask: '{+38 }'
-                    }
-                }
-            });
-        });
-    }
-    
-    document.querySelectorAll('form[action]').forEach((form) => {
-        form.querySelectorAll('label>*').forEach((item) => {
-            if(formTypeField.includes(item.tagName.toLowerCase())) {
-                item.addEventListener('input', () => {
-                    item.value ? item.classList.add('focus') : item.classList.remove('focus');
-                });
+            if (data.error) {
+                self.alertError(data.msg);
+            } else if(data.html && !data.html.hasOwnProperty('id')) {
+                this.element.classList.add('form-success');
+                this.element.style.height = this.element.getBoundingClientRect().height + 'px';
+                this.element.innerHTML = data.html.content;
             }
-        });
-    });
-    
-    new FormController().init('form[action]', function (formObject, data, response) {
-    
-        console.log('target: formObject - ', formObject);
-        console.log('target: data - ', data);
-        console.log('target: response - ', response);
-        console.log('target: form object - ', this);
-        
-        if (data.error) {
-            self.alertError(data.msg);
-        } else if(data.html && !data.html.hasOwnProperty('id')) {
-            this.element.classList.add('form-success');
-            this.element.style.height = this.element.getBoundingClientRect().height + 'px';
-            this.element.innerHTML = data.html.content;
+        },
+        error: function (formObject, data, response) {
+            console.log(formObject, data, response);
         }
-        
-    });
+    })
 };
 
 global.showAjaxForm = function (e, code) {
@@ -179,20 +138,13 @@ global.getMoreNews = function (e) {
     new AxiosGet({
         url: e.target.getAttribute('href')
     }, function (self, response) {
-        if(response) {
-            e.target.classList.remove('disabled');
-            if(response.pagination.nextPage) {
-                e.target.setAttribute('href', response.pagination.nextPage);
-            } else {
-                e.target.removeAttribute('href');
-                e.target.style.visibility = 'hidden';
-            }
-            if(response.html.content) {
-                document.querySelector('.news').insertAdjacentHTML('beforeend', response.html.content);
-                animateContent();
-            }
-            
-        }
+        console.log(response);
     });
     return false;
 };
+
+document.addEventListener('DOMContentLoaded', function () {
+    
+    formControllerInit();
+    
+});

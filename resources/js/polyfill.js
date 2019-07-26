@@ -1,24 +1,22 @@
-/*!
+/**
  * VERSION: 1.0.0
  * DATE: 2019-07-25
  * UPDATES AND DOCS AT: https://github.com/cf-digital-ukraine/default-html-template/
  *
- * @license Copyright (c) 2002-2019, CF.Digital. All rights reserved.
- *
- * *********************************************
  * *********************************************
  * Its custom polyfill bundle for
  *
  *          IE 11 and Safari 10.3
+ * *********************************************
  *
- * *********************************************
- * *********************************************
  * Require core-js, whatwg-fetch, native-promise-only
- *      to install it run
- *      "npm install core-js whatwg-fetch native-promise-only"
+ * to install it run
+ *  - "npm install core-js whatwg-fetch native-promise-only"
  *
  * @author: Woloja, wolojanex5@gmail.com
+ * @license Copyright (c) 2002-2019, CF.Digital. All rights reserved.
  */
+
 
 /**
  * this DOM Ready event for some manipulations.

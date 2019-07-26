@@ -17,21 +17,22 @@ export default class FormController {
         
         formObject.submitBtn.classList.add(this.data.disabledClass);
         
+        if (!action) throw new Error(`Can't send form without action link`);
+        
         switch (method) {
             case 'GET':
                 
                 console.log('need work with this');
-                
                 break;
             case 'POST':
                 axios({method: 'post', url: action, data: formData})
                     .then(function (response) {
                         formObject.submitBtn.classList.remove(self.data.disabledClass);
-                        formObject.callback(self, response.data, response);
+                        formObject.success(self, response.data, response);
                     })
                     .catch(function (error) {
                         formObject.submitBtn.classList.remove(self.data.disabledClass);
-                        formObject.callback(self, error.response.data, error);
+                        formObject.error(self, error.response.data, error);
                     });
                 break;
             default:
@@ -40,27 +41,26 @@ export default class FormController {
         
     }
     
-    init(elements, callback) {
-        document.querySelectorAll(elements).forEach((item) => {
+    init(params) {
+        document.querySelectorAll(params.forms).forEach((item) => {
             if (!item.hasAttribute(this.data.ajaxTrigger)) {
-                
                 let submitButton = item.querySelector('[type="submit"]');
                 let requiredFields = item.querySelectorAll('[required]');
                 if (!submitButton) throw new Error(`This form ${item.id} not have submit trigger`);
-                
+            
                 this.data.forms.push({
                     element: item,
                     id: item.id,
                     submitBtn: submitButton,
                     required: requiredFields,
-                    callback: callback
+                    success: params.success,
+                    error: params.error
                 });
                 item.setAttribute(this.data.ajaxTrigger, "on");
             }
         });
         this.bindAjaxSubmit();
     }
-    
     bindAjaxSubmit() {
         let self = this;
         this.data.forms.forEach((item) => {

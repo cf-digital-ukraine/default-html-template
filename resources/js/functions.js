@@ -2,6 +2,7 @@
 
 /*********************
  *** Scroll document to element
+ *
  * @param elem {object}
  * @param time {number} float in seconds
  * @param offsetRange {number}
@@ -22,7 +23,8 @@ export function scrollToElem(elem, time = 0.4, offsetRange = 0) {
 
 
 /*********************
- * Its a magic,
+ *** Event ready DOM!
+ *
  * @param callback {function} - Function to execute when ready
  *********************/
 export const onReady = (callback) => {
@@ -31,10 +33,24 @@ export const onReady = (callback) => {
         : document.addEventListener("DOMContentLoaded", callback, false);
 };
 
+/*********************
+ *** any addEventListener
+ *
+ * @param {string | Element | NodeList} elements  - Function to execute when ready
+ * @param {string} event - Event tpe
+ * @param {function} callback - Execute function when triggered event
+ * @returns {Element}
+ *********************/
+export const createEvent = (elements, event, callback) => {
+    getElements(elements).forEach((item) => {
+        return item.addEventListener(event, callback, false);
+    })
+};
+
 
 export function isExist(elements, callback) {
     if(getElements(elements)) {
-        return callback(elements);
+        return callback(getElements(elements));
     } else {
         return false;
     }
@@ -43,6 +59,7 @@ export function isExist(elements, callback) {
 /*********************
  *** Check parameter on string or DOM object/objects and return Array of object
      or false is not find element on page
+ *
  * @param {string | Element | NodeList} parameter  - Function to execute when ready
  * @returns {boolean | Array}
  *********************/
@@ -70,7 +87,8 @@ export const getElements = (parameter) => {
 
 /*********************
  *** Check parameter on string or DOM object/objects and return Array of object
- or false is not find element on page
+     or false is not find element on page
+ *
  * @param {string | Element | NodeList} parameter  - Function to execute when ready
  * @returns {boolean | Element}
  *********************/
@@ -85,20 +103,8 @@ export const getElement = (parameter) => {
 };
 
 /*********************
- *** any addEventListener
- * @param {string | Element | NodeList} elements  - Function to execute when ready
- * @param {string} event - Event tpe
- * @param {function} callback - Execute function when triggered event
- * @returns {Element}
- *********************/
-export const createEvent = (elements, event, callback) => {
-    getElements(elements).forEach((item) => {
-        return item.addEventListener(event, callback, false);
-    })
-};
-
-/*********************
  *** Check device gesture
+ *
  * @returns {boolean}
  *********************/
 export function isTouchDevice() {
@@ -117,6 +123,7 @@ export function isTouchDevice() {
 
 /*********************
  *** Check if click out of active block and active button
+ *
  * @param event {object} - DOM event
  * @param block {string} - css selector of container
  * @param button {string} - css selector of button
@@ -134,6 +141,7 @@ export function checkOutsideClick(event, block, button, activeClass) {
 
 /*********************
  *** Set browser cookie
+ *
  * @param name
  * @param value
  * @param days
@@ -151,6 +159,7 @@ export function createCookie(name, value, days) {
 
 /*********************
  *** Get browser cookie
+ *
  * @param {string} name
  * @returns {string | null}
  *********************/
@@ -167,6 +176,7 @@ export function readCookie(name) {
 
 /*********************
  *** Delete browser cookie
+ *
  * @param name
  * @returns {undefined}
  *********************/
