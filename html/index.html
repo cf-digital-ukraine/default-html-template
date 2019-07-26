@@ -33,8 +33,9 @@
         <!-- from back end -->
         <script type="text/javascript">
             window.site = {
-                defaultLanguage: 'ua',
-                isOldInternetExplorer: false,
+                language: 'ua',
+                isExplorer: false,
+                isSafari: false,
                 link: 'current-link'
             }
         </script>
@@ -79,7 +80,8 @@
         <!-- defer - execute when download external file
                      and dont stop loading page
                      and wait when evenr DOMContnentLoaded fires (document.ready) -->
-        <script defer src="js/app.min.js" type="text/javascript"></script>
+        <script defer src="js/system.js" type="text/javascript"></script>
+        <script defer src="js/app.js" type="text/javascript"></script>
 
     </body>
 

@@ -1,4 +1,5 @@
-/*
+/**
+ *
  |--------------------------------------------------------------------------
  | Mix Asset Management
  |--------------------------------------------------------------------------
@@ -6,11 +7,8 @@
  | Mix provides a clean, fluent API for defining some Webpack build steps
  | for your Laravel application. By default, we are compiling the Sass
  | file for the application as well as bundling up all the JS files.
- |
+ *
  */
-//TODO later^^
-// mix.setPublicPath('path/to/public');
-// mix.setResourceRoot('prefix/for/resource/locators');
 
 const mix = require("laravel-mix");
 const webpack = require("webpack");
@@ -90,8 +88,8 @@ if (mix.inProduction()) {
     
     // combine all imported modules and libs to single ECMAScript 2015+ file.
     mix.js("resources/js/app.js", "resources/js/vanilla-app.js");
-    mix.js("resources/js/system.js", "public/js/vanilla-system.js");
-    mix.js("resources/js/polyfill.js", "public/js/vanilla-polyfill.js");
+    mix.js("resources/js/system.js", "resources/js/vanilla-system.js");
+    mix.js("resources/js/polyfill.js", "resources/js/vanilla-polyfill.js");
     
     // convert single file into a backwards compatible
     // version of JavaScript in current and older browsers.
@@ -99,9 +97,28 @@ if (mix.inProduction()) {
     mix.babel("resources/js/vanilla-system.js", "public/js/system.js");
     mix.babel("resources/js/vanilla-polyfill.js", "public/js/polyfill.js");
     
+    mix.then(function () {
+        
+        let filesToClear = ["resources/js/vanilla-app.js", "resources/js/vanilla-system.js", "resources/js/vanilla-polyfill.js"];
+    
+        for (let i = 0; i < filesToClear.length; i++) {
+            fs.stat(filesToClear[i], function(err, stats) {
+                if (stats && stats.isFile()) {
+                    fs.unlink(filesToClear[i], (err) => {
+                        if (err) throw err;
+                        console.log(filesToClear[i] + ' - was deleted');
+                    });
+                }
+            });
+        }
+        
+        
+    }); //<-- Will be triggered each time Webpack finishes building.
+    
+    
 } else {
     
-    mix.sourceMaps(); // Enable sourcemaps
+    mix.sourceMaps();
     
     //section for development, will not work IE11<, safari 9.1.3<
     mix.js("resources/js/app.js", "public/js/app.js");
@@ -110,9 +127,9 @@ if (mix.inProduction()) {
 }
 
 // fonts, images, temporary diresctories
-// mix.copyDirectory('resources/fonts', 'public/fonts/');
-// mix.copyDirectory('resources/image', 'public/image/');
-// mix.copyDirectory('resources/html', 'public/');
+mix.copyDirectory('resources/fonts', 'public/fonts/');
+mix.copyDirectory('resources/image', 'public/image/');
+mix.copyDirectory('html', 'public/');
 // mix.copyDirectory("from", "to");
 
 mix.sass("resources/sass/app.sass", "public/css/app.css");
@@ -123,4 +140,3 @@ mix.sass("resources/sass/old-browser.sass", "public/css/old-browser.css");
 // mix.disableNotifications();
 
 // mix.browserSync('name.domain');
-// mix.then(function () {}) <-- Will be triggered each time Webpack finishes building.

@@ -38,3 +38,6 @@ yarn-error.log
 
 /public/css/
 /public/js/
+/public/fonts/
+/public/image/
+/public/index.html
