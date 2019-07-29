@@ -46,13 +46,10 @@
  *
  */
 
-let snippet = `<div>
-        <p>{{title}}</p>
-</div>`;
-
 new GoogleMap({
     extend: {
         clusterJson: googleJson,
+        snippetTpl: `<div><p>{{title}}</p><a href="tel:{{phone}}">{{phone}}</a></div>`,
         showOnMap: {
             elements: "data-marker",
             zoom: 15,
@@ -78,7 +75,7 @@ new GoogleMap({
         container: '.map',
         icon: `${window.site.theme}/img/svg/pin.svg`,
         zoom: 10,
-        center: { lat: 48.2558897, lng: 26.6927347 },
+        center: {lat: 48.2558897, lng: 26.6927347},
         styles: [],
     },
     cluster: {
@@ -101,55 +98,75 @@ export default class GoogleMap {
     
     constructor(data) {
         
-        this.options = Object.assign(
-            {
-                container: false,
-                center: { lat: 48.2558897, lng: 26.6927347 },
-                icon: false,
-                onFullScreen: false,
-                clusterIcon: false,
-                zoom: 10,
-                zoomOnClick: 15,
-                styles: [],
-                clusters: false,
-                onInit: false,
-                direction: false
-            },
-            data
-        );
+        this.configuration = data;
+        this.setupData();
+        this.exceptions();
         
-        if(this.options.container && typeof this.options.container === "string"){
-            this.options.container = document.querySelector(this.options.container);
+        if (this.mapOtions.container && typeof this.mapOtions.container === "string") {
+            this.mapOtions.container = document.querySelector(this.mapOtions.container);
+        }
+        if (this.mapOtions.container.hasAttribute('data-center')) {
+            this.mapOtions.center.lat = parseFloat(this.mapOtions.container.getAttribute('data-center').split(',')[0]);
+            this.mapOtions.center.lng = parseFloat(this.mapOtions.container.getAttribute('data-center').split(',')[1]);
         }
         
-        if(this.options.container.hasAttribute('data-center')){
-            this.options.center.lat = parseFloat(this.options.container.getAttribute('data-center').split(',')[0]);
-            this.options.center.lng = parseFloat(this.options.container.getAttribute('data-center').split(',')[1]);
-        }
-        
-        this.data = this.options;
-        this.configure();
         this.tryInit();
     }
     
-    set data(params) {
+    set configuration(allOptions) {
         
-        this.mainMap = null;
+        this.extend = Object.assign(
+            {
+                clusterJson: false,
+                snippetTpl: `<div><p>{{title}}</p><a href="tel:{{phone}}">{{phone}}</a></div>`,
+                showOnMap: {
+                    elements: false,
+                    zoom: false,
+                    callback: false
+                },
+                geocoding: {
+                    input: false,
+                    type: false,
+                    callback: false
+                },
+                onInit: false
+            },
+            allOptions.extend
+        );
+        
+        this.mapOtions = Object.assign(
+            {
+                container: false,
+                icon: false,
+                zoom: 15,
+                center: {lat: 48.2558897, lng: 26.6927347}
+            },
+            allOptions.map
+        );
+        
+        this.cluster = Object.assign(
+            {
+                imagePath: "https://gmaps-marker-clusterer.github.io/gmaps-marker-clusterer/assets/images/m"
+            },
+            allOptions.cluster
+        );
+    }
+    
+    setupData() {
+        this.map = null;
         this.infoWindow = null;
         this.interval = null;
         this.loaded = false;
-        
-        this.clusterOptions = Object.assign(
-            {
-                onClick: false,
-                markerTrigger: false,
-                imagePath: "https://gmaps-marker-clusterer.github.io/gmaps-marker-clusterer/assets/images/m"
-            },
-            params.clusters
-        );
-        
         this.markerCluster = {};
         this.markersArray = [];
+        this.geocodingWindow = {markers: [], infoWindow: []};
+    }
+    
+    exceptions() {
+        if (!this.mapOtions.container) new TypeError('Initialize without container');
+        if (!this.mapOtions.center || this.mapOtions.center === '') new TypeError('Initialize without center positions');
+        if (!this.mapOtions.center && !this.extend.clusterJson) new TypeError('Initialize without any positions');
+        if (this.extend && !this.extend.clusterJson) new TypeError('Initialize without clusterJson');
     }
     
     tryInit() {
@@ -167,115 +184,91 @@ export default class GoogleMap {
             this.loaded = true;
             clearInterval(this.interval);
             this.init();
-    
+            
             console.log('API for Google Maps was loaded');
             delete this.loaded;
             delete this.interval;
         }
     }
     
-    configure() {
-        if (!this.options.container) throw Error('Initialize without container');
-        if (!this.options.center || this.options.center === '') throw Error('Initialize without center positions');
-        if (!this.options.center && !this.options.clusters) throw Error('Initialize without any positions');
-        if (this.options.clusters && !this.options.clusters.json) throw Error('Initialize without clusterJson');
-        if (!this.options.container.length) return false;
-    }
-    
-    
     init() {
         
-        this.mainMap = new google.maps.Map(this.options.container, {
-            center: new google.maps.LatLng(this.options.center),
-            zoom: this.options.zoom,
-            icon: this.options.icon,
-            styles: this.options.styles,
-            
-            disableDefaultUI: true,
-            
-            navigationControl: true,
-            navigationControlOptions: {
-                style: google.maps.NavigationControlStyle.ZOOM_PAN
-            },
-            zoomControl: true,
-            zoomControlOptions: {
-                position: google.maps.ControlPosition.LEFT_CENTER
-            },
-            fullscreenControl: false,
-            fullscreenControlOptions: {
-                position: google.maps.ControlPosition.LEFT_CENTER
-            },
-            
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-            streetViewControl: false,
-            scrollwheel: false
-        });
+        this.map = new google.maps.Map(this.mapOtions.container, this.mapOtions);
+        
         this.infoWindow = new google.maps.InfoWindow();
         
-        if (this.options.clusters) {
-            this.buildCluster(this.options, this.options.clusters.json);
+        if (this.extend.clusterJson) {
+            this.buildCluster(this.extend);
         }
         
-        if(typeof this.options.geocoding === "object") {
-            this.makeGeoCoding(this.options.geocoding);
+        if (this.extend.geocoding.input) {
+            this.makeGeocoding(this.extend.geocoding);
         }
         
-        this.onMapClick();
-        this.onFullScreen();
-    
-        if(this.options.onInit) {
-            this.options.onInit(this, this.mainMap);
+        // this.onMapClick();
+        // this.onFullScreen();
+        
+        if (this.extend.onInit) {
+            this.extend.onInit(this, this.map);
         }
         
     }
     
-    makeGeoCoding(params) {
-        this.mainMap.geocodingWindow = {markers: [], infoWindow: []};
-    
-        let geocoder = new google.maps.Geocoder(),
-            _this = this;
+    clearGeocoding() {
+        this.geocodingWindow.infoWindow.forEach((windowItem) => {
+            windowItem.close();
+        });
         
-        if(!params.input || typeof params.input === "string") return false;
+        this.geocodingWindow.markers.forEach((windowItem) => {
+            windowItem.setMap(null);
+        });
+        
+        this.geocodingWindow = {markers: [], infoWindow: []};
+    }
+    
+    makeGeocoding(params) {
+        
+        let geocoder = new google.maps.Geocoder(),
+            self = this;
+        
+        try {
+            if (params.input && typeof params.input === "string") params.input = document.querySelector(params.input)
+        }
+        catch (e) {
+            new TypeError('Initialize without input element');
+        }
         
         params.input.addEventListener(params.type, function () {
-            let input = this;
+            
             if (this.value) {
                 if (geocoder) {
-                    geocoder.geocode({'address': input.value},
-                        function(results, status) {
+                    geocoder.geocode({'address': this.value},
+                        function (results, status) {
                             //clear old search;
-                            _this.mainMap.geocodingWindow.infoWindow.forEach((windowItem) => {
-                                windowItem.close();
-                            });
-
-                            _this.mainMap.geocodingWindow.markers.forEach((windowItem) => {
-                                windowItem.setMap(null);
-                            });
-
-                            _this.mainMap.geocodingWindow = {markers: [], infoWindow: []};
-
+                            self.clearGeocoding();
+                            
                             if (status === google.maps.GeocoderStatus.OK) {
                                 if (status !== google.maps.GeocoderStatus.ZERO_RESULTS) {
-                                    _this.mainMap.panTo(results[0].geometry.location);
-
+                                    self.map.panTo(results[0].geometry.location);
+                                    
                                     let marker = new google.maps.Marker({
                                         position: results[0].geometry.location,
-                                        map: _this.mainMap,
+                                        map: self.map,
                                         title: results[0].formatted_address
                                     });
-
+                                    
                                     let infoWindow = new google.maps.InfoWindow({
                                         content: '<b>' + results[0].formatted_address + '</b>',
                                         size: new google.maps.Size(150, 50)
                                     });
-                                    google.maps.event.addListener(infoWindow,'closeclick',function(){
-                                        marker.setMap(null);
-                                        _this.mainMap.geocodingWindow = {markers: [], infoWindow: []};
+                                    
+                                    google.maps.event.addListener(infoWindow, 'closeclick', function () {
+                                        self.clearGeocoding();
                                     });
-
-                                    _this.mainMap.geocodingWindow.markers.push(marker);
-                                    _this.mainMap.geocodingWindow.infoWindow.push(infoWindow);
-                                    infoWindow.open(_this.mainMap, marker);
+                                    
+                                    self.geocodingWindow.markers.push(marker);
+                                    self.geocodingWindow.infoWindow.push(infoWindow);
+                                    infoWindow.open(self.map, marker);
                                     params.callback(results);
                                 } else {
                                     console.log("No results found");
@@ -287,40 +280,28 @@ export default class GoogleMap {
                         });
                 }
             } else {
-                _this.mainMap.setZoom(_this.options.zoom);
-                _this.mainMap.panTo(_this.options.center);
+                self.map.setZoom(self.mapOtions.zoom);
+                self.map.panTo(self.mapOtions.center);
             }
-
-            return false;
-        });
-    }
-    
-    onFullScreen() {
-        let self = this;
-        document.addEventListener('fullscreenchange', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
             
-            let isFullScreen = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
-            self.mainMap.setOptions({ scrollwheel: isFullScreen });
-            if(self.options.onFullScreen) {
-                self.options.onFullScreen(e, self, isFullScreen);
-            }
             return false;
         });
     }
     
-    onMapClick() {
-        google.maps.event.addListener(this.mainMap, 'click', function (evt) {
-            console.log('click on map', evt);
-        });
-    }
     markerSnippet(data) {
+        
+        console.log(this.extend.snippetTpl);
+        
         return `<div class="marker-snippet">
                     <p class="title">${data.title}</p>
                     <p class="address">${data.address}</p>
                 </div>`;
     }
+    
+    getSnippetVars() {
+        return this.extend.snippetTpl.match(/{{[a-zA-Z]+}}/gm);
+    }
+    
     buildCluster(options, locations) {
         
         if (this.markerCluster.clusters_) {
@@ -331,7 +312,7 @@ export default class GoogleMap {
         }
         
         let icon = options.icon,
-            self= this;
+            self = this;
         
         this.mainMap.panTo(options.center);
         
@@ -352,13 +333,13 @@ export default class GoogleMap {
                 return false;
             });
             
-            if(this.options.clusters.markerTrigger) {
-                if(document.querySelector(`[${this.options.clusters.markerTrigger}="${locations[i].id}"]`)) {
+            if (this.options.clusters.markerTrigger) {
+                if (document.querySelector(`[${this.options.clusters.markerTrigger}="${locations[i].id}"]`)) {
                     document.querySelector(`[${this.options.clusters.markerTrigger}="${locations[i].id}"]`).addEventListener('click', function () {
                         let message = self.markerSnippet(locations[i]);
-        
-                        if(self.options.clusters.onClick) {
-            
+                        
+                        if (self.options.clusters.onClick) {
+                            
                             self.options.clusters.onClick(function () {
                                 self.infoWindow.setContent(message);
                                 if (self.options.zoomOnClick) {
@@ -368,7 +349,7 @@ export default class GoogleMap {
                                 self.infoWindow.open(self.mainMap, marker);
                                 return false;
                             });
-            
+                            
                         } else {
                             self.infoWindow.setContent(message);
                             if (self.options.clusters.zoomOnClick) {
@@ -387,6 +368,32 @@ export default class GoogleMap {
         }
         
         this.markerCluster = new MarkerClusterer(this.mainMap, this.markersArray, this.clusterOptions);
+    }
+    
+    
+    
+    
+    
+    
+    onFullScreen() {
+        let self = this;
+        document.addEventListener('fullscreenchange', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            let isFullScreen = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+            self.mainMap.setOptions({scrollwheel: isFullScreen});
+            if (self.options.onFullScreen) {
+                self.options.onFullScreen(e, self, isFullScreen);
+            }
+            return false;
+        });
+    }
+    
+    onMapClick() {
+        google.maps.event.addListener(this.mainMap, 'click', function (evt) {
+            console.log('click on map', evt);
+        });
     }
     
 }

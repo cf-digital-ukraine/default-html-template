@@ -1,7 +1,10 @@
 {
-    "/public/js/app.js": "/public/js/app.js",
+    "/resources/js/vanilla-app.js": "/resources/js/vanilla-app.js",
     "/public/css/app.css": "/public/css/app.css",
     "/public/css/old-browser.css": "/public/css/old-browser.css",
-    "/public/js/polyfill.js": "/public/js/polyfill.js",
-    "/public/js/system.js": "/public/js/system.js"
+    "/resources/js/vanilla-polyfill.js": "/resources/js/vanilla-polyfill.js",
+    "/resources/js/vanilla-system.js": "/resources/js/vanilla-system.js",
+    "/public/js/app.js": "/public/js/app.js",
+    "/public/js/system.js": "/public/js/system.js",
+    "/public/js/polyfill.js": "/public/js/polyfill.js"
 }
