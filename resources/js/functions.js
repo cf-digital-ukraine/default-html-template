@@ -212,6 +212,15 @@ export function eraseCookie(name) {
 //     });
 // };
 
+if(!Element.prototype.addEventListenerOnce) {
+    Element.prototype.addEventListenerOnce = function (type, listener, addOptions, removeOptions) {
+        this.addEventListener(type, function fn(event) {
+            this.removeEventListener(type, fn, removeOptions);
+            listener.apply(this, arguments);
+        }, addOptions);
+    };
+}
+
 
 export class FormValidation {
 
