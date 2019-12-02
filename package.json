@@ -34,7 +34,7 @@
     "axios": "^0.19.0",
     "native-promise-only": "^0.8.1",
     "whatwg-fetch": "^3.0.0",
-    "core-js": "^3.1.4"
+    "core-js": "^3.4.7"
   },
   "browserslist": [
     "defaults",
